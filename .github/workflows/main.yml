@@ -1,9 +1,13 @@
-name: CI
-on: [push]
+name: Build on Ubuntu
+on: push
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Install jq tool
+        run: |
+          sudo apt-get update
+          sudo pkg install openjdk-17
